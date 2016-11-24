@@ -18,6 +18,7 @@
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.kernelParams = [ "quiet" ];
 
   fonts.fontconfig.ultimate.enable = true;
   fonts.fontconfig.hinting.style = "slight";
@@ -25,6 +26,7 @@
   # fonts.fontconfig.dpi = 127;
   networking.hostName = "ike"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.connman.enable = true;
 
   # Select internationalisation properties.
   i18n = {
@@ -34,7 +36,7 @@
   };
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "US/Central";
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -45,8 +47,11 @@
     dmenu
     (import ./emacs.nix { inherit pkgs; })
 	rxvt_unicode
-    compton
     git
+    haskellPackages.xmobar
+    # haskellPackages.alsa-core
+    # haskellPackages.alsa-mixer
+    xtitle
   ];
 
   # List services that you want to enable:
@@ -61,15 +66,27 @@
   services.xserver.enable = true;
   services.xserver.layout = "dvorak";
   services.xserver.xkbOptions = "caps:escape";
-  services.xserver.windowManager.xmonad.enable = true;
-  services.xserver.windowManager.xmonad.enableContribAndExtras = true;
+  # services.xserver.windowManager.xmonad.enable = true;
+  # services.xserver.windowManager.xmonad.enableContribAndExtras = true;
+  services.xserver.windowManager.bspwm.enable = true;
   services.xserver.synaptics.enable = true;
   services.xserver.synaptics.twoFingerScroll = true;
   services.xserver.synaptics.minSpeed = ".6";
   services.xserver.synaptics.horizTwoFingerScroll = false;
   services.xserver.synaptics.horizEdgeScroll = true;
 
-  # services.compton.enable = true;
+  services.xserver.deviceSection = ''
+    Option "TearFree" "true"
+  '';
+
+  services.compton.enable = true;
+  services.compton.inactiveOpacity = "0.9";
+  services.compton.shadow = true;
+  services.compton.shadowOffsets = [ (-15) (-8) ];
+  services.compton.shadowOpacity = ".5";
+
+  services.logind.extraConfig = "HandlePowerKey=suspend";
+
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.kdm.enable = true;
   # services.xserver.desktopManager.kde4.enable = true;
