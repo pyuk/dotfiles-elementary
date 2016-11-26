@@ -26,6 +26,7 @@
   # fonts.fontconfig.dpi = 127;
   networking.hostName = "ike"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.userControlled.enable = true;
   # networking.connman.enable = true;
 
   # Select internationalisation properties.
@@ -52,6 +53,10 @@
     # haskellPackages.alsa-core
     # haskellPackages.alsa-mixer
     xtitle
+  ];
+
+  fonts.fonts = with pkgs; [
+    noto-fonts-cjk
   ];
 
   # List services that you want to enable:
