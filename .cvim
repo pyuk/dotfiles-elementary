@@ -1,0 +1,16 @@
+map d scrollLeft
+map h scrollPageDown
+map t scrollPageUp
+map n scrollRight
+map e closeTab
+map k nextSearchResult
+map K previousSearchResult
+map p nextTab
+map , previousTab
+map ' %
+map u :restore<Space>
+map o :open<Space>
+map . :tabnew<Space>
+map <A-u> goForward
+map <A-o> goBack
+set numerichints
