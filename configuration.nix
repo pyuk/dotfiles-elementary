@@ -18,6 +18,7 @@
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.kernelPackages = pkgs.linuxPackages_4_8;
   boot.kernelParams = [ "quiet" ];
 
   fonts.fontconfig.ultimate.enable = true;
@@ -89,6 +90,9 @@
   services.compton.shadow = true;
   services.compton.shadowOffsets = [ (-15) (-8) ];
   services.compton.shadowOpacity = ".5";
+  services.compton.extraOptions = ''
+    shadow-radius = 10;
+  '';
 
   services.logind.extraConfig = "HandlePowerKey=suspend";
 
