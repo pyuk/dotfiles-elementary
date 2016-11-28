@@ -54,6 +54,7 @@
     # haskellPackages.alsa-core
     # haskellPackages.alsa-mixer
     xtitle
+    xbanish
   ];
 
   fonts.fonts = with pkgs; [
@@ -80,6 +81,19 @@
   services.xserver.synaptics.minSpeed = ".6";
   services.xserver.synaptics.horizTwoFingerScroll = false;
   services.xserver.synaptics.horizEdgeScroll = true;
+  services.xserver.synaptics.additionalOptions = ''
+    Option "FingerHigh" "60"
+    Option "FingerHigh" "50"
+  '';
+
+  services.emacs.enable = true;
+  services.emacs.package = import /etc/nixos/emacs.nix { pkgs = pkgs; };
+
+ 
+
+  # services.xbanish.enable = true;
+  # services.unclutter.enable = true;
+  # services.unclutter.keystroke = true;
 
   services.xserver.deviceSection = ''
     Option "TearFree" "true"
