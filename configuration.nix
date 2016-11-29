@@ -48,13 +48,16 @@
     chromium
     dmenu
     (import ./emacs.nix { inherit pkgs; })
-	rxvt_unicode
+    rxvt_unicode
     git
     haskellPackages.xmobar
     # haskellPackages.alsa-core
     # haskellPackages.alsa-mixer
     xtitle
     xbanish
+    cabal-install
+    cabal2nix
+    zathura
   ];
 
   fonts.fonts = with pkgs; [
@@ -83,7 +86,7 @@
   services.xserver.synaptics.horizEdgeScroll = true;
   services.xserver.synaptics.additionalOptions = ''
     Option "FingerHigh" "60"
-    Option "FingerHigh" "50"
+    Option "FingerLow" "50"
   '';
 
   services.emacs.enable = true;
