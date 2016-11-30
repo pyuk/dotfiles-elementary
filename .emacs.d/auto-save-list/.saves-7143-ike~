@@ -1,4 +1,0 @@
-/sudo:root@localhost:/etc/nixos/configuration.nix
-~/#!sudo:root@localhost:!etc!nixos!configuration.nix#
-/home/kai/.config/compton.conf
-~/#!home!kai!.config!compton.conf#
