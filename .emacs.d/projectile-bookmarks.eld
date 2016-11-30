@@ -1,0 +1,1 @@
+("~/Projects/otherthing/" "~/Projects/my-project/" "~/Projects/dotfiles-elementary/")

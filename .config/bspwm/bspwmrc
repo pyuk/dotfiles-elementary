@@ -1,0 +1,33 @@
+#! /bin/sh
+
+sxhkd &
+
+bspc config border_width         0
+bspc config window_gap           0
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config click_to_focus       true
+
+#bspc monitor -d I II III IV V VI VII VIII IX X
+#bspc monitor -d α β δ ε θ λ π σ φ ψ
+#bspc monitor -d 一 二 三 四 五 六 七 八 九 十
+bspc monitor -d ⅰⅠ ⅱⅡ ⅲⅢ ⅳⅣ ⅴⅤ ⅵⅥ ⅶⅦ ⅷⅧ ⅸⅨ ⅹⅩ
+
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Lxappearance state=floating
+bspc rule -a Pcmanfm state=floating follow=on
+bspc rule -a Pavucontrol state=floating
+bspc rule -a mpv state=floating
+bspc rule -a Anki state=floating
+bspc rule -a Emacs state=tiled
+#bspc rule -a transparent_blank border=off
+#bspc rule -a Chromium desktop='^2'
+#bspc rule -a mplayer2 state=floating
+#bspc rule -a Kupfer.py focus=on
+#bspc rule -a Screenkey manage=off
+
+./.config/bspwm/panel/panel &
+xbanish &

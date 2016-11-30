@@ -1,0 +1,99 @@
+ f*)
+            # xtitle output
+            title=" <fc=$COLOR_TITLE_FG>${line#?}</fc>"
+    		;;
+
+		W*)
+			# bspwm's state
+			wm=""
+			IFS=':'
+			set -- ${line#?}
+			while [ $# -gt 0 ] ; do
+				item=$1
+				name=${item#?}
+				case $item in
+					[mM]*)
+						[ $num_mon -lt 2 ] && shift && continue
+						case $item in
+							m*)
+								# monitor
+								FG=$COLOR_MONITOR_FG
+								BG=$COLOR_MONITOR_BG
+								;;
+							M*)
+								# focused monitor
+								FG=$COLOR_FOCUSED_MONITOR_FG
+								BG=$COLOR_FOCUSED_MONITOR_BG
+								;;
+						esac
+						wm="${wm}%{U${FG}}%{B${BG}}%{A:bspc monitor -f ${name}:} ${name} %{A}%{B-}%{F-}  "
+						;;
+					[fFoOuU]*)
+						case $item in
+							f*)
+								# free desktop
+								FG=$COLOR_FREE_FG
+								BG=$COLOR_FREE_BG
+                                UG=$COLOR_DEFAULT_BG
+						        wm="${wm}  <fc=$COLOR_FREE_FG>${name:0:1}</fc>"
+								;;
+							F*)
+								# focused free desktop
+								FG=$COLOR_FOCUSED_FREE_FG
+								BG=$COLOR_FOCUSED_FREE_BG
+                                UG=$COLOR_ICON
+						        wm="${wm}  <fc=$COLOR_FOCUSED_FREE_FG>${name:0:1}</fc>" 
+								;;
+							o*)
+								# occupied desktop
+								FG=$COLOR_OCCUPIED_FG
+								BG=$COLOR_OCCUPIED_BG
+                                UG=$COLOR_DEFAULT_BG
+						        wm="${wm}  <fc=$COLOR_OCCUPIED_FG>${name:1:1}</fc>"
+								;;
+							O*)
+								# focused occupied desktop
+								FG=$COLOR_FOCUSED_OCCUPIED_FG
+								BG=$COLOR_FOCUSED_OCCUPIED_BG
+                                UG=$COLOR_ICON
+						        wm="${wm}  <fc=$COLOR_FOCUSED_OCCUPIED_FG>${name:1:1}</fc>" 
+								;;
+							u*)
+								# urgent desktop
+								FG=$COLOR_URGENT_FG
+								BG=$COLOR_URGENT_BG
+                                UG=$COLOR_DEFAULT_BG
+						        wm="${wm} ${name}" 
+								;;
+							U*)
+								# focused urgent desktop
+								FG=$COLOR_FOCUSED_URGENT_FG
+								BG=$COLOR_FOCUSED_URGENT_BG
+                                UG=$COLOR_ICON
+						        wm="${wm} ${name}" 
+								;;
+						esac
+						;;
+					[LTG]*)
+						# layout, state and flags
+                       case $name in
+                       #    'T') wm="${wm}%{F$COLOR_STATE_FG}%{B$COLOR_STATE_BG}  %{B-}%{F-}  "
+                       #        ;;
+                           'T') wm=${wm}
+                               ;;
+                           'M') wm="${wm}  <fc=#$COLOR_FOCUSED_OCCUPIED_FG>⧅</fc>"
+                               ;;
+                           'F') wm="${wm}  <fc=#$COLOR_FOCUSED_OCCUPIED_FG>⧉</fc>"
+                               ;;
+                           'P') wm="${wm}  <fc=#$COLOR_FOCUSED_OCCUPIED_FG>⧈</fc>"  
+                               ;;
+                             *) wm="${wm}${name}"
+                               ;;
+                       esac
+				esac
+				shift
+			done
+			;;
+	esac
+    printf "%s\n" "${wm} ${title}"
+done

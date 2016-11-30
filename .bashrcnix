@@ -1,0 +1,15 @@
+#alias wpa="sudo ./Projects/wpastuff"
+alias wpa="./Projects/wpastuff2"
+alias emacs="emacsclient --create-frame"
+#alias Emacs="emacsclient --create-frame /sudo:root@localhost/:"
+
+#   function E() {
+#filename=$1
+#without_beg_slash="${1##/}"
+#if [[ $without_beg_slash == $1 ]];then
+#    filename="{PWD%//}/{PWD%//}/1"
+#fi
+#emacsclient -c -a emacs "/sudo:root@localhost:$filename"
+#   }
+
+export TERM=xterm-256color

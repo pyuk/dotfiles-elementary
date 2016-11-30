@@ -1,0 +1,15 @@
+map h scroll down
+map t scroll up
+map n scroll right
+map d scroll left
+map <A-h> navigate next
+map <A-t> navigate previous
+map p navigate previous
+map W adjust_window width
+map <C-c>r recolor
+map k toggle_page_mode
+
+set recolor-darkcolor "#dcdccc"
+set recolor-lightcolor "#3f3f3f"
+set font "PragmataPro normal 8"
+set guioptions ""

@@ -1,0 +1,8 @@
+/sudo:root@localhost:/etc/nixos/emacs.nix
+/tmp/#!sudo:root@localhost:!etc!nixos!emacs.nix#
+/mnt/home/kai/Documents/haskell-programming-0.12.0-screen.pdf
+/mnt/home/kai/Documents/#haskell-programming-0.12.0-screen.pdf#
+/home/kai/.emacs.d/configuration.org
+/home/kai/.emacs.d/#configuration.org#
+/home/kai/.bashrc
+/home/kai/#.bashrc#

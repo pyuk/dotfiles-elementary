@@ -1,0 +1,47 @@
+URxvt.scrollBar: false
+URxvt.internalBorder: 7
+URxvt.font: xft:PragmataPro-8
+URxvt.boldFont: xft:PragmataPro-8:bold
+URxvt.italicFont: xft:PragmataPro-8:italic
+URxvt.boldItalicFont: xft:PragmataPro-8:bold:italic
+URxvt.iso14755: False
+
+xft.dpi: 127
+xft.autohint: 0
+xft.lcdfilter: lcdlight
+xft.hintstyle: hintslight
+xft.antialias: 1
+xft.rgba: rgb
+
+emacs.internalBorder: 7
+emacs.font:PragmataPro-8
+
+colorUL: #669090
+! Zenburn color-scheme
+urxvt*background:  #3f3f3f
+urxvt*foreground:  #dcdccc
+! black + red
+!urxvt*color0:     #3f3f3f
+urxvt*color0:      #1E2320
+urxvt*color1:      #705050
+! green + yellow
+urxvt*color2:      #60b48a
+urxvt*color3:      #dfaf8f
+! blue + purple
+urxvt*color4:      #506070
+urxvt*color5:      #dc8cc3
+! cyan + white
+urxvt*color6:      #8cd0d3
+urxvt*color7:      #dcdccc
+! bright-black + bright-red
+urxvt*color8:      #709080
+urxvt*color9:      #dca3a3
+! bright-green + bright-yellow
+urxvt*color10:     #c3bf9f
+urxvt*color11:     #f0dfaf
+! bright-blue + bright-purple
+urxvt*color12:     #94bff3
+urxvt*color13:     #ec93d3
+! bright-cyan + bright-white
+urxvt*color14:     #93e0e3
+urxvt*color15:     #ffffff

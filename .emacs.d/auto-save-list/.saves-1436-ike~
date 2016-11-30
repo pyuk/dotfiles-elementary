@@ -1,0 +1,4 @@
+/sudo:root@localhost:/etc/nixos/configuration.nix
+/tmp/#!sudo:root@localhost:!etc!nixos!configuration.nix#
+/home/kai/.config/bspwm/bspwmrc
+/home/kai/.config/bspwm/#bspwmrc#
