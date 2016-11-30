@@ -58,6 +58,8 @@
     cabal-install
     cabal2nix
     zathura
+    ghc
+    stack
   ];
 
   fonts.fonts = with pkgs; [
@@ -103,12 +105,15 @@
   '';
 
   services.compton.enable = true;
-  services.compton.inactiveOpacity = "0.9";
-  services.compton.shadow = true;
-  services.compton.shadowOffsets = [ (-15) (-8) ];
+  services.compton.inactiveOpacity = "0.8";
+  # services.compton.shadow = true;
+  # services.compton.shadowOffsets = [ (-15) (-2) ];
   services.compton.shadowOpacity = ".5";
   services.compton.extraOptions = ''
     shadow-radius = 10;
+    shadow = true;
+    shadow-offset-y = -10;
+    shadow-offset-x = -15;
   '';
 
   services.logind.extraConfig = "HandlePowerKey=suspend";
