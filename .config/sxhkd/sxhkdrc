@@ -7,7 +7,7 @@ super + Return
 
 # program launcher
 super + space
-	dmenu_run
+	dmenu_run -fn 'PragmataPro-8' -nb '#3f3f3f' -nf '#dcdccc' -sb '#506070' -sf '#dcdccc' -f -b
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -109,11 +109,11 @@ super + ctrl + shift + space
 
 # expand a window by moving one of its side outward
 super + alt + {d,h,t,n}
-    bspc node {@west -r -10, @south -r +10, @north -r -10, @east -r +10}
+    bspc node {@west -r -20, @south -r +20, @north -r -20, @east -r +20}
 
 # contract a window by moving one of its side inward
 super + alt + shift + {d,h,t,n}
-    bspc node {@east -r -10, @north -r +10, @south -r -10, @west -r +10}
+    bspc node {@east -r -20, @north -r +20, @south -r -20, @west -r +20}
 
 # move a floating window
 super + ctrl + shift + {d,h,t,n}
@@ -156,14 +156,5 @@ XF86AudioMute
 alt + BackSpace
     ~/Projects/touchpad_toggle.sh
 
-super + shift + q
-    firefox
-
 super + shift + c
     chromium
-
-super + ctrl + return
-      emptyframe
-
-super + shift b
-    ./Projects/ur
