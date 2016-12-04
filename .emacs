@@ -24,10 +24,28 @@
 (setq nlinum-relative-redisplay-delay 0)      ;; delay
 (setq nlinum-relative-current-symbol "")      ;; or "" for display current line number
 (setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
 
-;(require 'powerline)
+(require 'powerline)
 ;(powerline-default-theme)
 ;(require 'powerline-evil)
+(require 'airline-themes)
+(require 'cl)
+(setq-default custom-safe-themes t)
+(load-theme 'airline-solarized-alternate-gui t)
+;(setq airline-cursor-colors nil)
+(setq evil-emacs-state-cursor   "#d3869b")
+(setq evil-normal-state-cursor  "#928374")
+(setq evil-insert-state-cursor  `(bar ,"#83a598"))
+(setq evil-replace-state-cursor "#8ec07c")
+(setq evil-visual-state-cursor  "#fe8019")
+
+(require 'diminish)
+(eval-after-load "intero" '(diminish 'intero-mode))
+(eval-after-load "company" '(diminish 'company-mode))
+(eval-after-load 'flycheck '(diminish 'flycheck-mode))
+(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 
 (evil-leader/set-key
     "," 'save-buffer
@@ -77,6 +95,25 @@
 (define-key evil-operator-state-map "w" 'evil-repeat-find-char-reverse)
 (define-key evil-operator-state-map "l" 'evil-find-char-to)
 
+;; esc quits
+(defun minibuffer-keyboard-quit ()
+  "Abort recursive edit.
+In Delete Selection mode, if the mark is active, just deactivate it;
+then it takes a second \\[keyboard-quit] to abort the minibuffer."
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(global-set-key [escape] 'evil-exit-emacs-state)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -85,14 +122,25 @@
  '(custom-enabled-themes (quote (gruvbox)))
  '(custom-safe-themes
    (quote
-    ("a164837cd2821475e1099911f356ed0d7bd730f13fa36907895f96a719e5ac3e" default)))
+    ("a20e430c1a70876d238a788d2529368c1dddd326c1bbb50ee4507ced6b37990b" "e87a2bd5abc8448f8676365692e908b709b93f2d3869c42a4371223aab7d9cf8" "b4caea661085e0df54e908fcedf96fb3755ba5e67f72b140c849c8876e5e4e31" "a164837cd2821475e1099911f356ed0d7bd730f13fa36907895f96a719e5ac3e" default)))
  '(inhibit-startup-screen t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(nlinum-relative-current-face ((t (:foreground "#7c6f64")))))
+ '(airline-emacs-outer ((t (:background "#d3869b" :foreground "#282828" :weight normal))))
+ '(airline-insert-center ((t (:background "#504945" :foreground "#bdae93" :weight normal))))
+ '(airline-insert-inner ((t (:background "#504945" :foreground "#bdae93" :weight normal))))
+ '(airline-insert-outer ((t (:background "#83a598" :foreground "#282828" :weight normal))))
+ '(airline-normal-center ((t (:background "#3c3836" :foreground "#a89984" :weight normal))))
+ '(airline-normal-inner ((t (:background "#504945" :foreground "#bdae93" :weight normal))))
+ '(airline-normal-outer ((t (:background "#928374" :foreground "#282828" :weight normal))))
+ '(airline-replace-outer ((t (:background "#8ec07c" :foreground "#282828" :weight normal))))
+ '(airline-visual-center ((t (:background "#7c6f64" :foreground "#282828" :weight normal))))
+ '(airline-visual-inner ((t (:background "#504945" :foreground "#bdae93" :weight normal))))
+ '(airline-visual-outer ((t (:background "#fe8019" :foreground "#282828" :weight normal))))
+ '(nlinum-relative-current-face ((t (:inherit linum :background "#282828" :foreground "#7c6f64" :weight bold)))))
 (setq backup-directory-alist
      `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
