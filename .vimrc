@@ -96,6 +96,7 @@ no e d
 no j e
 no K N
 no k n
+no , w
 
 augroup netrw_dvorak_fix
     autocmd!
